@@ -1,4 +1,15 @@
 services:
+  db:
+    image: postgres:12
+    container_name: postgres12
+    restart: always
+    expose:
+      - "5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=cuenca
+      - TZ=America/Guayaquil
   spring:
     image: 'jmurillov1/spring:latest'
     container_name: spring
@@ -10,9 +21,9 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - logging.level.org.springframework.jdbc.core=DEBUG
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://jmurillov1.postgres.database.azure.com:5432/postgres?sslmode=require
-      - SPRING_DATASOURCE_USERNAME=jmurillov1@jmurillov1
-      - SPRING_DATASOURCE_PASSWORD=Cuenca2022
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=cuenca
   angular:
     image: 'jmurillov1/angular:latest'
     container_name: angular-service
@@ -24,4 +35,4 @@ services:
     depends_on:
       - spring
 volumes:
-  db-data:
+  db_data:
