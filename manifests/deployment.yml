@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "jmkub-0479"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "jmkub-0479"
+  template:
+    metadata:
+      labels:
+        app: "jmkub-0479"
+    spec:
+      containers:
+        - name: "jmkub-0479"
+          image: "imagesjm.azurecr.io/jmkub"
+          ports:
+          - containerPort: 8080
