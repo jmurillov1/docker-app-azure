@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: "jmkub-0da5"
+    labels:
+        app: "jmkub-0da5"
+    annotations:
+        kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+    rules:
+        - host: default-jmkub-0da5.1da82ccfb80149b6bcfb.eastus.aksapp.io
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: "jmkub-0da5"
+                servicePort: 80
