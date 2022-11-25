@@ -57,7 +57,6 @@ jobs:
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
-          manifests/ingress.yml
         images: |
           imagesdockerjm.azurecr.io/jmkub:${{ github.sha }}
         imagepullsecrets: |
